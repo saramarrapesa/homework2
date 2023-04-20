@@ -7,21 +7,32 @@ public class StanzaMagica extends Stanza {
 	final static private int SOGLIA_MAGICA_DEFAULT = 3;
 	private int contatoreAttrezziPosati;
 	private int sogliaMagica;
+	
+	//due costruttori
 	public StanzaMagica(String nome) {
 	this(nome, SOGLIA_MAGICA_DEFAULT);
 	}
+	
 	public StanzaMagica(String nome, int soglia) {
 	super(nome);
 	this.contatoreAttrezziPosati = 0;
 	this.sogliaMagica = soglia;
 	}
+
 	@Override
-	public boolean addAttrezzo(Attrezzo attrezzo) {
-	...
-	}
-	private Attrezzo modificaAttrezzo(Attrezzo attrezzo) {
-	...// (>>)
-	}
+	 public boolean addAttrezzo(Attrezzo attrezzo) {
+		this.contatoreAttrezziPosati++;
+	        if (this.contatoreAttrezziPosati < this.sogliaMagica) 
+	        	attrezzo= this.modificaAttrezzo(attrezzo);
+	        if (this.numeroAttrezzi<this.attrezzi.length) {
+	        	this.attrezzi[this.numeroAttrezzi] = attrezzo;
+	        	this.numeroAttrezzi++;
+	        	return true;
+
+	        	}
+	        	else return false;
+
+	        	}
 	
 	private Attrezzo modificaAttrezzo(Attrezzo attrezzo) {
 		StringBuilder nomeInvertito;
